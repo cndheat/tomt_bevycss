@@ -8,9 +8,8 @@ use bevy::{
         AssetServer,
         Commands,
         Node,
-        Text,
         With,
-    },
+    }, text::TextFont,
 };
 
 /// Applies the `font` property on [`TextStyle::font`](`TextStyle`) property of all sections on matched [`Text`] components.
@@ -21,7 +20,7 @@ impl Property
 for FontProperty
 {
     type Cache = String;
-    type Components = &'static mut Text;
+    type Components = &'static mut TextFont;
     type Filters = With<Node>;
 
     fn name(
@@ -46,9 +45,6 @@ for FontProperty
         asset_server: &AssetServer,
         _commands: &mut Commands,
     ) {
-        for section in components.sections.iter_mut()
-        {
-            section.style.font = asset_server.load(cache);
-        }
+        components.font = asset_server.load(cache);
     }
 }

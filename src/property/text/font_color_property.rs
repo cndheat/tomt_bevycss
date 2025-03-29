@@ -9,9 +9,8 @@ use bevy::{
         Color,
         Commands,
         Node,
-        Text,
         With,
-    },
+    }, text::TextColor,
 };
 
 /// Applies the `color` property on [`TextStyle::color`](`TextStyle`) field of all sections on matched [`Text`] components.
@@ -22,7 +21,7 @@ impl Property
 for FontColorProperty
 {
     type Cache = Color;
-    type Components = &'static mut Text;
+    type Components = &'static mut TextColor;
     type Filters = With<Node>;
 
     fn name(
@@ -47,9 +46,6 @@ for FontColorProperty
         _asset_server: &AssetServer,
         _commands: &mut Commands,
     ) {
-        for section in components.sections.iter_mut()
-        {
-            section.style.color = *cache;
-        }
+        components.0 = *cache;
     }
 }

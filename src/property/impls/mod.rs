@@ -14,7 +14,7 @@ impl Property for BackgroundColorProperty {
     type Cache = Color;
     type Components = (
         Option<&'static mut BackgroundColor>,
-        Option<&'static mut UiImage>,
+        Option<&'static mut ImageNode>,
     );
     type Filters = ();
 

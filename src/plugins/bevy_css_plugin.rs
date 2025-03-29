@@ -36,9 +36,9 @@ impl BevyCssPlugin
         app.register_component_selector::<BackgroundColor>("background-color");
         app.register_component_selector::<Text>("text");
         app.register_component_selector::<Button>("button");
-        app.register_component_selector::<Node>("node");
-        app.register_component_selector::<Style>("style");
-        app.register_component_selector::<UiImage>("ui-image");
+        app.register_component_selector::<ComputedNode>("node");
+        app.register_component_selector::<Node>("style");
+        app.register_component_selector::<ImageNode>("ui-image");
         app.register_component_selector::<Interaction>("interaction");
     }
 
@@ -49,7 +49,6 @@ impl BevyCssPlugin
 
         app.register_property::<DisplayProperty>();
         app.register_property::<PositionTypeProperty>();
-        app.register_property::<DirectionProperty>();
         app.register_property::<FlexDirectionProperty>();
         app.register_property::<FlexWrapProperty>();
         app.register_property::<AlignItemsProperty>();

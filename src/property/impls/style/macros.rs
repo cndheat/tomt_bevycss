@@ -14,7 +14,7 @@ macro_rules! impl_style_rect
         impl Property for $struct
         {
             type Cache = UiRect;
-            type Components = &'static mut Style;
+            type Components = &'static mut Node;
             type Filters = With<Node>;
 
             fn name()
@@ -63,7 +63,7 @@ macro_rules! impl_style_single_value
         impl Property for $struct
         {
             type Cache = $cache;
-            type Components = &'static mut Style;
+            type Components = &'static mut Node;
             type Filters = With<Node>;
 
             fn name()
@@ -115,7 +115,7 @@ macro_rules! impl_style_enum
         impl Property for $struct
         {
             type Cache = $cache;
-            type Components = &'static mut Style;
+            type Components = &'static mut Node;
             type Filters = With<Node>;
 
             fn name()

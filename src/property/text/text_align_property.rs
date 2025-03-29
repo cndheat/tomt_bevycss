@@ -6,12 +6,8 @@ use crate::{
 use bevy::{
     ecs::query::QueryItem,
     prelude::{
-        AssetServer,
-        Commands,
-        Node,
-        Text, JustifyText,
-        With,
-    },
+        AssetServer, Commands, JustifyText, Node, With
+    }, text::TextLayout,
 };
 
 /// Applies the `text-align` property on [`Text::horizontal`](`JustifyText`) components.
@@ -23,7 +19,7 @@ for TextAlignProperty
 {
     // Using Option since Cache must impl Default, which  doesn't
     type Cache = Option<JustifyText>;
-    type Components = &'static mut Text;
+    type Components = &'static mut TextLayout;
     type Filters = With<Node>;
 
     fn name(

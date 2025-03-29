@@ -56,13 +56,6 @@ impl_style_enum!(
 );
 
 impl_style_enum!(
-    Direction, "direction", DirectionProperty, direction,
-    "inherit" => Inherit,
-    "left-to-right" => LeftToRight,
-    "right-to-left" => RightToLeft,
-);
-
-impl_style_enum!(
     FlexDirection, "flex-direction", FlexDirectionProperty, flex_direction,
     "row" => Row,
     "column" => Column,

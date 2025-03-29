@@ -48,9 +48,6 @@ for TextContentProperty
         _commands: &mut Commands,
     ) {
         // TODO: Maybe change this so each line break is a new section
-        for section in components.sections.iter_mut()
-        {
-            section.value = cache.clone()
-        }
+        components.0 = cache.clone();
     }
 }

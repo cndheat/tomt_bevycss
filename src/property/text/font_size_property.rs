@@ -8,9 +8,8 @@ use bevy::{
         AssetServer,
         Commands,
         Node,
-        Text,
         With,
-    },
+    }, text::TextFont,
 };
 
 /// Applies the `font-size` property on [`TextStyle::font_size`](`TextStyle`) property of all sections on matched [`Text`] components.
@@ -21,7 +20,7 @@ impl Property
 for FontSizeProperty
 {
     type Cache = f32;
-    type Components = &'static mut Text;
+    type Components = &'static mut TextFont;
     type Filters = With<Node>;
 
     fn name(
@@ -46,9 +45,6 @@ for FontSizeProperty
         _asset_server: &AssetServer,
         _commands: &mut Commands,
     ) {
-        for section in components.sections.iter_mut()
-        {
-            section.style.font_size = *cache
-        }
+        components.font_size = *cache
     }
 }
