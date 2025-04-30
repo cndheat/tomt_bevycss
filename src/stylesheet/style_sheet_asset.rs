@@ -5,11 +5,12 @@ use crate::{
     selector::Selector,
 };
 
+use ahash::AHasher;
+
 use bevy::{
     log::trace,
     prelude::*,
-    reflect::{TypePath},
-    utils::AHasher,
+    reflect::TypePath,
 };
 use smallvec::SmallVec;
 use std::hash::{Hash, Hasher};

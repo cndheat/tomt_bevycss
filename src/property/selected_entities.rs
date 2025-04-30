@@ -5,7 +5,7 @@ use bevy::{
         Deref, DerefMut,
         Entity,
     },
-    utils::HashMap,
+    platform::collections::HashMap
 };
 use smallvec::SmallVec;
 

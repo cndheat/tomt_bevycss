@@ -8,7 +8,7 @@ use bevy::{
         Entity,
         Handle,
     },
-    utils::HashMap
+    platform::collections::HashMap
 };
 
 #[derive(Clone)]
@@ -84,7 +84,7 @@ impl<'me, 'w, 's> StyleTree
                     trace!("Creating entry in tree for entity {entity_idx}");
                     let parent = match parent
                     {
-                        Some(p) => self.get_or_find_root(p.get(), query),
+                        Some(p) => self.get_or_find_root(p.parent(), query),
                         None => {
                             debug!("Entity {entity_idx} has no parent UI node, terminating search");
                             None
@@ -92,20 +92,22 @@ impl<'me, 'w, 's> StyleTree
                     }
                     .map(|p| p.sheet_handle);
 
-                    self.insert_unique_unchecked(
-                        style.handle().clone(),
-                        StyleTreeNode
-                        {
-                            entity,
-                            sheet_handle: style.handle().clone(),
-                            parent,
-                        },
-                    ).1
+                    unsafe {
+                        self.insert_unique_unchecked(
+                            style.handle().clone(),
+                            StyleTreeNode
+                            {
+                                entity,
+                                sheet_handle: style.handle().clone(),
+                                parent,
+                            },
+                        )
+                    }.1
                 };
                 Some(result.clone())
             }
 
-            (None, Some(parent)) => self.get_or_find_root(parent.get(), query),
+            (None, Some(parent)) => self.get_or_find_root(parent.parent(), query),
 
             (None, None) => {
                 debug!("Entity {entity_idx} has no UI parent, or attached stylesheet");

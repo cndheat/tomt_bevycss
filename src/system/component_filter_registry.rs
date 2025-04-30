@@ -2,7 +2,7 @@ use super::ComponentFilter;
 
 use bevy::{
     prelude::Resource,
-    utils::HashMap,
+    platform::collections::HashMap,
 };
 
 #[derive(Default, Resource)]

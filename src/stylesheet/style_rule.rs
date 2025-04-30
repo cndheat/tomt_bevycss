@@ -3,7 +3,7 @@ use crate::{
     selector::Selector,
 };
 
-use bevy::utils::HashMap;
+use bevy::platform::collections::HashMap;
 use std::fmt;
 
 /// Represents a single rule inside a style sheet with a [`Selector`] which determines which entities

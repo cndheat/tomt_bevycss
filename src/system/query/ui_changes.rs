@@ -36,7 +36,7 @@ mod monitor_changes
     use crate::prelude::Class;
     use bevy::prelude::{
         Children,
-        Parent,
+        ChildOf,
     };
 
     #[cfg(not(feature = "pseudo_class"))]
@@ -64,7 +64,7 @@ mod monitor_changes
         pub type ReadOnlyWorldQuery = (
             Or<(
                 Added<StyleSheet>,  Changed<StyleSheet>,
-                Added<Parent>,      Changed<Parent>,
+                Added<ChildOf>,     Changed<ChildOf>,
                 Added<Children>,    Changed<Children>,
                 Added<Class>,       Changed<Class>,
                 Added<Interaction>, Changed<Interaction>,

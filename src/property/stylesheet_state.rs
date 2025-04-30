@@ -12,7 +12,7 @@ use bevy::{
         Handle,
         Resource,
     },
-    utils::HashMap,
+    platform::collections::HashMap
 };
 
 #[derive(Debug, Clone)]

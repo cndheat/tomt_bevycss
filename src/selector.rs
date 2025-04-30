@@ -1,4 +1,4 @@
-use bevy::utils::AHasher;
+use ahash::AHasher;
 use cssparser::CowRcStr;
 use smallvec::{smallvec, SmallVec};
 use std::{

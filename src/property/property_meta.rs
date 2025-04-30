@@ -8,9 +8,7 @@ use crate::{
 };
 
 use bevy::{
-    log::error,
-    prelude::{Deref, DerefMut},
-    utils::HashMap,
+    log::error, platform::collections::HashMap, prelude::{Deref, DerefMut}
 };
 
 

@@ -2,7 +2,7 @@ use crate::prelude::StyleSheet;
 use bevy::prelude::{
     Children,
     Entity,
-    Parent,
+    ChildOf,
     Query,
 };
 
@@ -14,7 +14,7 @@ pub type QueryUiNodes<'w, 's> = Query<
 
 pub type WorldQuery = (
     Entity,
-    Option<&'static Parent>,
+    Option<&'static ChildOf>,
     Option<&'static Children>,
     Option<&'static StyleSheet>
 );

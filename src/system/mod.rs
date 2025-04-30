@@ -34,7 +34,7 @@ use bevy::{
         Deref, DerefMut,
         Entity, EventReader,
         Mut,
-        Parent,
+        ChildOf,
         Query,
         ResMut, Resource,
         World,
@@ -363,10 +363,10 @@ fn get_entities_with_component(
 /// `query_parent` - Bevy [Query] paramter to perform recursive searching
 fn get_parents_recursively(
     root: Entity,
-    parent: &Parent,
+    parent: &ChildOf,
     query_parent: &query::QueryEntityParent
 ) -> SmallVec<[Entity; 8]> {
-    let mut result = match query_parent.get(parent.get())
+    let mut result = match query_parent.get(parent.parent())
     {
         Ok((entity, parent)) => match entity == root
         {
@@ -376,7 +376,7 @@ fn get_parents_recursively(
         Err(_err) => Default::default(),
     };
 
-    result.push(parent.get());
+    result.push(parent.parent());
     result
 }
 

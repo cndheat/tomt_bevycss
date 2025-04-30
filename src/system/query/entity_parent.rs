@@ -1,7 +1,7 @@
 use bevy::prelude::{
     Entity,
     Node,
-    Parent,
+    ChildOf,
     Query,
     With,
 };
@@ -12,5 +12,5 @@ pub type QueryEntityParent<'w, 's> = Query<
     ReadOnlyWorldQuery
 >;
 
-pub type WorldQuery = (Entity, &'static Parent);
+pub type WorldQuery = (Entity, &'static ChildOf);
 pub type ReadOnlyWorldQuery = With<Node>;
